@@ -11,8 +11,6 @@ class Solution:
             temp_value = temp_value + nums[j+1]
             suffix.append(temp_value)
         j = len(prefix) -1 
-        print(prefix)
-        print(suffix)
         for i, num in enumerate(prefix): 
             if num == suffix[j]:
                 return i 
