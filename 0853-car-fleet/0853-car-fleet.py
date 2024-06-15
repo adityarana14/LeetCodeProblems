@@ -1,22 +1,28 @@
 from collections import deque 
 class Solution:
+    
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        sorted_position_with_speed = sorted([(x,y) for x , y in zip(position,speed)],reverse = True)
-        stack = deque()
-        # print(sorted_position_with_speed)
-        for key, val in sorted_position_with_speed:
-            distance = target - key
-            time_taken = distance / val
-            # print(f"time taken {time_taken} distance {distance}. val {val} key {key}")
-            if not stack:
-                stack.append(time_taken)
+        return self.car_fleet(target, position, speed)
+    
+    def car_fleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        
+        fleet_sorted_info = sorted([(x,y) for x, y in zip(position, speed)], reverse = True)
+        stack_fleet = deque()
+
+        for pos, sp in fleet_sorted_info: 
+            distance = target - pos
+            time = distance / sp
+
+            if not stack_fleet: 
+                stack_fleet.append(time)
             else: 
-                if stack[-1] < time_taken:
-                    stack.append(time_taken)
+                if stack_fleet[-1] < time: 
+                    stack_fleet.append(time)
 
-        # print(stack)
-        return len(stack) 
-
+        return len(stack_fleet)
 
 
+
+        return 1 
+    
         
