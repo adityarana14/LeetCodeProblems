@@ -16,7 +16,7 @@ class Solution:
             return 
         
         output_copy = output.copy()
-        output_copy.append(candidates[0]) if candidates else None 
+        output_copy.append(candidates[0]) 
 
         self.combGenerator(candidates[:], output_copy, sum_num + candidates[0], target) 
         self.combGenerator(candidates[1:], output.copy(), sum_num, target) 
